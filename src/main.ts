@@ -1,13 +1,12 @@
-import express, { Application, Request, Response, NextFunction } from 'express';
+import express, { Express, Request, Response } from "express";
 
-// Boot express
-const app: Application = express();
-const port = 5000;
+const app: Express = express();
+const port = 3000;
 
-// Application routing
-app.use('/', (req: Request, res: Response, next: NextFunction ) => {
-    res.status(200).send({data: 'Hello from Ornio AS'});
+app.get("/", (req: Request, res: Response) => {
+  res.send("Express + TypeScript Server");
 });
 
-// Start server
-app.listen(port, () => console.log(`Server is listening on port ${port}!`));
+app.listen(port, () => {
+  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+});
