@@ -1,17 +1,17 @@
 class WorldTime {
   abbreviation: string;
   clientIp: string;
-  datetime: Date;
+  datetime: string;
   dayOfWeek: number;
   dayOfYear: number;
   dst: boolean;
-  dstFrom: Date;
+  dstFrom: string;
   dstOffset: number;
-  dstUntil: Date;
+  dstUntil: string;
   rawOffset: number;
   timezone: string;
   unixtime: number;
-  utcDatetime: Date;
+  utcDatetime: string;
   utcOffset: string;
   weekNumber: number;
 }
