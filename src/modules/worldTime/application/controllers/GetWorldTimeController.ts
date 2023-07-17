@@ -13,6 +13,10 @@ export default class GetWorldTimeController {
   @GET()
   async run(req: Request, res: Response) {
     const timezone = String(req.query?.zone ?? "");
+    if (!timezone) {
+      res.status(404).send("Timezone is required");
+      return;
+    }
     res.send(await this.#worldTimeUseCase.run(timezone));
   }
 }

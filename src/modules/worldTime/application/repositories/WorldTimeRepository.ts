@@ -10,9 +10,17 @@ export class WorldTimeRepository implements IWorldTimeRepository {
     this.#baseService = baseService;
   }
 
+  async timezone(): Promise<string> {
+    const response = await this.#baseService.fetch({
+      url: HTTP_TIMEZONE_TIME,
+    });
+    const data = await response.json();
+    return data;
+  }
+
   async get(...params: string[]): Promise<WorldTime> {
     const response = await this.#baseService.fetch({
-      url: `${HTTP_TIMEZONE_TIME}${params.join("/")}`,
+      url: `${HTTP_TIMEZONE_TIME}/${params.join("/")}`,
     });
     const data = await response.json();
     return convertKeysToCamelCase(data) as WorldTime;

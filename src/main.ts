@@ -1,6 +1,7 @@
 import { createContainer } from "awilix";
-import express, { Express, Request, Response } from "express";
 import { controller, scopePerRequest } from "awilix-express";
+import express, { Express, Request, Response } from "express";
+import GetTimezoneWorldTimeController from "./modules/worldTime/application/controllers/GetTimezoneWorldTimeController";
 import GetWorldTimeController from "./modules/worldTime/application/controllers/GetWorldTimeController";
 import registerContext from "./share/application/injectionContainer/register";
 
@@ -11,6 +12,7 @@ export const containerAwilix = createContainer();
 
 app.use(scopePerRequest(containerAwilix));
 app.use(controller(GetWorldTimeController));
+app.use(controller(GetTimezoneWorldTimeController));
 
 registerContext(containerAwilix);
 
