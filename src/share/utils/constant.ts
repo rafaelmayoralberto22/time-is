@@ -1,1 +1,1 @@
-export const HTTP_TIMEZONE_TIME = "http://worldtimeapi.org/api/timezone/";
+export const HTTP_TIMEZONE_TIME = "http://worldtimeapi.org/api/timezone";
