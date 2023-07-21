@@ -1,8 +1,7 @@
 import { createContainer } from "awilix";
-import { controller, scopePerRequest } from "awilix-express";
-import express, { Express, Request, Response } from "express";
-import GetTimezoneWorldTimeController from "./modules/worldTime/application/controllers/GetTimezoneWorldTimeController";
-import GetWorldTimeController from "./modules/worldTime/application/controllers/GetWorldTimeController";
+import { scopePerRequest } from "awilix-express";
+import express, { type Express, type Request, type Response } from "express";
+import { registerControllers } from "./share/application/injectionContainer/controller";
 import registerContext from "./share/application/injectionContainer/register";
 
 const app: Express = express();
@@ -10,11 +9,13 @@ const port = 3000;
 
 export const containerAwilix = createContainer();
 
+app.use(express.json());
 app.use(scopePerRequest(containerAwilix));
-app.use(controller(GetWorldTimeController));
-app.use(controller(GetTimezoneWorldTimeController));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 registerContext(containerAwilix);
+registerControllers(app);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express Time API server");

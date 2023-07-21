@@ -1,6 +1,7 @@
 import { GET, route } from "awilix-express";
 import { Request, Response } from "express";
-import { GetTimezoneWorldTimeUseCase } from "../../infrastructure/GetTimezoneWorldTimeUseCase";
+import { type GetTimezoneWorldTimeUseCase } from "../../infrastructure/GetTimezoneWorldTimeUseCase";
+import { GetTimezoneWorldTimeControllerProps } from "../../domain/models/GetTimezoneWorldTimeControllerProps";
 
 @route("/world-timer")
 export default class GetTimezoneWorldTimeController {
@@ -8,15 +9,13 @@ export default class GetTimezoneWorldTimeController {
 
   constructor({
     timezoneWorldTimeUseCase,
-  }: {
-    timezoneWorldTimeUseCase: GetTimezoneWorldTimeUseCase;
-  }) {
+  }: GetTimezoneWorldTimeControllerProps) {
     this.#timezoneWorldTimeUseCase = timezoneWorldTimeUseCase;
   }
 
   @route("/timezone")
   @GET()
-  async run(req: Request, res: Response) {
+  async run(req: Request, res: Response): Promise<void> {
     res.send(await this.#timezoneWorldTimeUseCase.run());
   }
 }

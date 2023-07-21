@@ -1,12 +1,14 @@
+import { type BaseServiceProps } from "../../../../share/domain/BaseServiceProps";
+import { type BaseService } from "../../../../share/application/service/BaseService";
 import { HTTP_TIMEZONE_TIME } from "../../../../share/utils/constant";
-import { BaseService } from "../../../../share/application/service/BaseService";
-import { IWorldTimeRepository } from "../../domain/interfaces/IWorldTimeRepository";
 import { convertKeysToCamelCase } from "../../../../share/utils/converters";
+import { type IWorldTimeRepository } from "../../domain/interfaces/IWorldTimeRepository";
+import { type WorldTime } from "../../domain/models/WorldTime";
 
 export class WorldTimeRepository implements IWorldTimeRepository {
   #baseService: BaseService;
 
-  constructor({ baseService }: { baseService: BaseService }) {
+  constructor({ baseService }: BaseServiceProps) {
     this.#baseService = baseService;
   }
 
@@ -23,6 +25,6 @@ export class WorldTimeRepository implements IWorldTimeRepository {
       url: `${HTTP_TIMEZONE_TIME}/${params.join("/")}`,
     });
     const data = await response.json();
-    return convertKeysToCamelCase(data) as WorldTime;
+    return convertKeysToCamelCase(data);
   }
 }

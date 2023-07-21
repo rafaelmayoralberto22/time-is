@@ -1,4 +1,4 @@
-class WorldTime {
+export class WorldTime {
   abbreviation: string;
   clientIp: string;
   datetime: string;
