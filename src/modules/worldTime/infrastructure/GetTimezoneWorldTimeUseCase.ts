@@ -1,4 +1,4 @@
-import { IWorldTimeRepository } from "../domain/interfaces/IWorldTimeRepository";
+import { type IWorldTimeRepository } from "../domain/interfaces/IWorldTimeRepository";
 
 export class GetTimezoneWorldTimeUseCase {
   #worldTimeRepository: IWorldTimeRepository;
