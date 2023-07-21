@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "awilix": "^8.0.1",
     "awilix-express": "^8.0.0",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
@@ -25,7 +26,6 @@
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.2",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "awilix": "^8.0.1",
     "concurrently": "^8.2.0",
     "eslint": "^8.45.0",
     "eslint-config-standard-with-typescript": "^36.1.0",
