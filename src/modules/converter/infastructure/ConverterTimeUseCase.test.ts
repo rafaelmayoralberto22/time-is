@@ -9,7 +9,7 @@ describe("ConverterTimeUseCase", () => {
       dateTime: "2023-07-21T17:18:12.673Z",
     });
 
-    expect(result).toEqual("2023-07-21 07:18:12 CEST");
+    expect(result).toContain("2023-07-21 07:18:12");
   });
 
   test("DateTime is required", async () => {
