@@ -11,6 +11,29 @@ export default class GetWorldTimeController {
     this.#worldTimeUseCase = worldTimeUseCase;
   }
 
+  /**
+   * @swagger
+   * /world-timer:
+   *    get:
+   *      tags:
+   *        - World Timer
+   *      summary: Timezone
+   *      description: Use to request value of timezone
+   *      parameters:
+   *        - in: query
+   *          name: zone
+   *          type: string
+   *          required: true
+   *          description: Timezone
+   *      responses:
+   *        200:
+   *          description: Return all time zones.
+   *          content:
+   *              application/json:
+   *                  schema:
+   *                      $ref: '#/components/schemas/WorldTime'
+   *
+   */
   @GET()
   async run(req: Request, res: Response): Promise<void> {
     const timezone = String(req.query?.zone ?? "");

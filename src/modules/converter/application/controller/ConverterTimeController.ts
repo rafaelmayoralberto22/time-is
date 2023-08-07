@@ -11,6 +11,30 @@ export default class ConverterTimeController {
     this.#converterTimeUseCase = converterTimeUseCase;
   }
 
+  /**
+   * @swagger
+   * /converter:
+   *    post:
+   *      tags:
+   *        - Converter
+   *      summary: Converter
+   *      description: Use to request value of timezone
+   *      requestBody:
+   *        description: Converter info
+   *        required: true
+   *        content:
+   *            application/json:
+   *                schema:
+   *                  $ref: '#/components/schemas/Converter'
+   *      responses:
+   *        200:
+   *          description: Return a valid date.
+   *          content:
+   *              application/json:
+   *                  schema:
+   *                      type: string
+   *
+   */
   @POST()
   async run(req: Request, res: Response): Promise<void> {
     const { body } = req;

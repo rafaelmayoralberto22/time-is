@@ -13,6 +13,20 @@ export default class GetTimezoneWorldTimeController {
     this.#timezoneWorldTimeUseCase = timezoneWorldTimeUseCase;
   }
 
+  /**
+   * @swagger
+   * /world-timer/timezone:
+   *    get:
+   *     tags:
+   *        - World Timer
+   *     summary: World timer
+   *     description: Use to request timezone
+   *     responses:
+   *       200:
+   *         description: Return all time zones.
+   *         schema:
+   *            type: string[]
+   */
   @route("/timezone")
   @GET()
   async run(req: Request, res: Response): Promise<void> {
